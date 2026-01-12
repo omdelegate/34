@@ -31,54 +31,56 @@
         <div class="text-xl">جاري الاتصال بقاعدة البيانات...</div>
     </div>
 
-    <div id="authScreen" class="fixed inset-0 bg-white z-[100] hidden flex items-center justify-center p-6">
-        <div class="w-full max-w-md">
-            <div class="text-center mb-8">
-                <div class="w-24 h-24 bg-blue-600 rounded-[2.5rem] mx-auto flex items-center justify-center shadow-2xl mb-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <span class="text-white text-4xl font-black">🇴🇲</span>
+    <div id="authScreen" class="fixed inset-0 bg-white z-[100] hidden overflow-y-auto">
+        <div class="min-h-full flex items-center justify-center p-6">
+            <div class="w-full max-w-md">
+                <div class="text-center mb-8 mt-4">
+                    <div class="w-24 h-24 bg-blue-600 rounded-[2.5rem] mx-auto flex items-center justify-center shadow-2xl mb-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                        <span class="text-white text-4xl font-black">🇴🇲</span>
+                    </div>
+                    <h1 class="text-3xl font-black text-gray-800 mb-2">منصة المناديب الأولى</h1>
+                    <p class="text-gray-500 font-bold text-sm">خدمة التوصيل الأسرع في سلطنة عمان</p>
                 </div>
-                <h1 class="text-3xl font-black text-gray-800 mb-2">منصة المناديب الأولى</h1>
-                <p class="text-gray-500 font-bold text-sm">خدمة التوصيل الأسرع في سلطنة عمان</p>
-            </div>
 
-            <div class="bg-gray-100 p-1.5 rounded-2xl mb-8 flex shadow-inner">
-                <button onclick="toggleAuth('login')" id="btnTabLogin" class="flex-1 py-4 rounded-xl font-black transition-all bg-white shadow-md text-blue-600">تسجيل دخول</button>
-                <button onclick="toggleAuth('signup')" id="btnTabSignup" class="flex-1 py-4 rounded-xl font-black transition-all text-gray-500 hover:text-gray-700">إنشاء حساب</button>
-            </div>
+                <div class="bg-gray-100 p-1.5 rounded-2xl mb-8 flex shadow-inner">
+                    <button onclick="toggleAuth('login')" id="btnTabLogin" class="flex-1 py-4 rounded-xl font-black transition-all bg-white shadow-md text-blue-600">تسجيل دخول</button>
+                    <button onclick="toggleAuth('signup')" id="btnTabSignup" class="flex-1 py-4 rounded-xl font-black transition-all text-gray-500 hover:text-gray-700">إنشاء حساب</button>
+                </div>
 
-            <div id="loginForm" class="space-y-5">
-                <div class="relative">
-                    <span class="absolute right-4 top-4 text-gray-400">📱</span>
-                    <input type="number" id="loginPhone" placeholder="رقم الهاتف (9xxxxxxx)" class="w-full p-4 pr-12 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all font-bold">
+                <div id="loginForm" class="space-y-5">
+                    <div class="relative">
+                        <span class="absolute right-4 top-4 text-gray-400">📱</span>
+                        <input type="number" id="loginPhone" placeholder="رقم الهاتف (9xxxxxxx)" class="w-full p-4 pr-12 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all font-bold">
+                    </div>
+                    <div class="relative">
+                        <span class="absolute right-4 top-4 text-gray-400">🔒</span>
+                        <input type="password" id="loginPass" placeholder="كلمة السر" class="w-full p-4 pr-12 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all font-bold">
+                    </div>
+                    <button onclick="handleLogin()" class="w-full py-5 bg-blue-600 text-white rounded-2xl font-black shadow-xl shadow-blue-200 hover:bg-blue-700 active:scale-[0.98] transition-all text-lg">دخول للمنصة</button>
+                    <button onclick="openRecoveryModal()" class="w-full text-sm text-gray-400 font-bold hover:text-blue-600 transition-colors">نسيت كلمة السر؟ استعادة الحساب</button>
                 </div>
-                <div class="relative">
-                    <span class="absolute right-4 top-4 text-gray-400">🔒</span>
-                    <input type="password" id="loginPass" placeholder="كلمة السر" class="w-full p-4 pr-12 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition-all font-bold">
-                </div>
-                <button onclick="handleLogin()" class="w-full py-5 bg-blue-600 text-white rounded-2xl font-black shadow-xl shadow-blue-200 hover:bg-blue-700 active:scale-[0.98] transition-all text-lg">دخول للمنصة</button>
-                <button onclick="openRecoveryModal()" class="w-full text-sm text-gray-400 font-bold hover:text-blue-600 transition-colors">نسيت كلمة السر؟ استعادة الحساب</button>
-            </div>
 
-            <div id="signupForm" class="space-y-4 hidden">
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" id="signFirst" placeholder="الاسم الأول" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
-                    <input type="text" id="signTribe" placeholder="القبيلة" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
+                <div id="signupForm" class="space-y-4 hidden pb-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="signFirst" placeholder="الاسم الأول" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
+                        <input type="text" id="signTribe" placeholder="القبيلة" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
+                    </div>
+                    <input type="number" id="signPhone" placeholder="رقم الهاتف العماني" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
+                    <input type="password" id="signPass" placeholder="كلمة السر (6 أرقام على الأقل)" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
+                    
+                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                        <p class="text-[11px] font-black text-blue-600 mb-2">🛡️ سؤال الأمان (لاستعادة حسابك عند النسيان):</p>
+                        <label class="block text-xs font-bold mb-2 text-gray-600">ما هو اسم والدك؟</label>
+                        <input type="text" id="signSecurityAnswer" placeholder="اكتب الإجابة هنا" class="w-full p-3 bg-white border border-blue-200 rounded-xl outline-none focus:border-blue-500 font-bold">
+                    </div>
+                    
+                    <button onclick="handleSignup()" class="w-full py-5 bg-green-600 text-white rounded-2xl font-black shadow-xl shadow-green-100 hover:bg-green-700 active:scale-[0.98] transition-all text-lg">إنشاء حسابي الآن</button>
                 </div>
-                <input type="number" id="signPhone" placeholder="رقم الهاتف العماني" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
-                <input type="password" id="signPass" placeholder="كلمة السر (6 أرقام على الأقل)" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-500 font-bold">
-                
-                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
-                    <p class="text-[11px] font-black text-blue-600 mb-2">🛡️ سؤال الأمان (لاستعادة حسابك عند النسيان):</p>
-                    <label class="block text-xs font-bold mb-2 text-gray-600">ما هو اسم والدك؟</label>
-                    <input type="text" id="signSecurityAnswer" placeholder="اكتب الإجابة هنا" class="w-full p-3 bg-white border border-blue-200 rounded-xl outline-none focus:border-blue-500 font-bold">
-                </div>
-                
-                <button onclick="handleSignup()" class="w-full py-5 bg-green-600 text-white rounded-2xl font-black shadow-xl shadow-green-100 hover:bg-green-700 active:scale-[0.98] transition-all text-lg">إنشاء حسابي الآن</button>
             </div>
         </div>
     </div>
 
-    <div id="recoveryModal" class="modal">
+    <div id="recoveryModal" class="modal" style="z-index: 9999 !important;">
         <div class="bg-white w-full max-w-md rounded-[3rem] p-8 shadow-2xl relative animate-in zoom-in duration-300">
             <button onclick="closeModal('recoveryModal')" class="absolute left-6 top-6 text-gray-300 hover:text-gray-600 text-2xl">✕</button>
             <h3 class="text-2xl font-black mb-2">🔑 استعادة كلمة المرور</h3>
